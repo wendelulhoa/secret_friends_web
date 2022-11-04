@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  db-mysql:
+    image: mysql
+    container_name: mysql-wendelulhoa
+    environment:
+      MYSQL_DATABASE: "wendelulhoa"
+      MYSQL_ROOT_PASSWORD: "123456"
+    ports:
+      - 3387:3306
+    volumes:
+      - ./.docker/mysql/dbdata:/var/lib/mysql
+    networks:
+      - ulhoa
+
+  phpmyadmin:
+    depends_on:
+      - db-mysql
+    image: phpmyadmin
+    container_name: phpmyadmin-wendelulhoa
+    restart: always
+    ports:
+      - 9027:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db-mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=123456
+    networks:
+      - ulhoa
+    links:
+      - db-mysql
+
+  web:
+    depends_on:
+      - db-mysql
+    build: ./.docker
+    container_name: server-wendelulhoa
+    ports:
+      - 9007:80
+    volumes:
+      - .:/var/www/html/wendelulhoa
+    restart: always
+    networks:
+      - ulhoa
+    cap_add:
+      - NET_ADMIN
+    links:
+      - db-mysql
+
+networks:
+  ulhoa:
+    driver: bridge
