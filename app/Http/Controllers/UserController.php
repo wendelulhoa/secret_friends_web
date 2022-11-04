@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\ChosenFriends;
 use App\Models\Suggestions;
 use App\Models\User;
 use Exception;
@@ -14,9 +15,11 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users         = User::all();
+        $chosenFriends = ChosenFriends::getAllChosenFriends();
+        $type = 'Participantes';
 
-        return view('home.index', ['users' => $users]);
+        return view('home.index', ['users' => $users, 'chosenFriends' => $chosenFriends, 'type' => $type]);
     }
 
     public function register()
@@ -47,9 +50,18 @@ class UserController extends Controller
             ]);
 
             DB::commit();
+
+            /* Mensagem de sucesso. */
+            session()->flash('successMsg', 'Salvo com sucesso.');
+
+            return redirect(route('home'));
         } catch (Exception $e) {
             DB::rollBack();
-            abort(500);
+
+            /* Mensagem de sucesso. */
+            session()->flash('warningMsg', 'Ops! esse usuário já existe.');
+            
+            return redirect(route('register'));
         }
     }
 }

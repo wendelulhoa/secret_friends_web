@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="" method="post" class="form-register">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Senha</label>
-                                    <input type="password" class="form-control" name="password" placeholder="Senha" required>
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Senha" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -30,13 +30,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Confirmar senha</label>
-                                    <input type="password" class="form-control" placeholder="Confirmar senha" required>
+                                    <input type="password" class="form-control" id="password-verify" onfocusout="verifyPassword()" placeholder="Confirmar senha" required>
                                 </div>
                             </div>
                             <div class="col-md-12 ">
                                 <div class="form-group">
                                     <label>Categorias de presentes</label>
-                                    <select multiple="multiple" class="categories" style="display: none;" required>
+                                    <select multiple="multiple" name="categories[]" class="categories" style="display: none;" required>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
                                         @endforeach
@@ -53,7 +53,7 @@
                         </div>
                         <div class="btn-toolbar sw-toolbar sw-toolbar-bottom justify-content-end">
                             <div class="btn-group mr-2 sw-btn-group-extra" role="group">
-                                <button class="btn btn-primary sw-btn-next">Enviar</button>
+                                <button class="btn btn-primary sw-btn-next">Criar</button>
                             </div>
                         </div>
                     </form>
@@ -69,6 +69,12 @@
                     width: '100%'
                 });
             });
+
+            function verifyPassword() {
+                if($('#password').val().trim() != $('#password-verify').val().trim()) {
+                    toastr.warning("Ops! as senhas não coincidem");
+                }
+            }
         </script>
     @endpush
 @endsection

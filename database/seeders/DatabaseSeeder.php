@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Artisan::call('migrate:rollback');
+        Artisan::call('migrate');
+        Artisan::call('db:seed --class=Categories');
+        Artisan::call('db:seed --class=SecretFriends');
+        Artisan::call('config:cache');
+
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('groupsfriends', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->boolean('active')->default(false)->comment('Ativo? TRUE=Sim; FALSE=Não;');
-            $table->boolean('admin')->default(false)->comment('Ativo? TRUE=Sim; FALSE=Não;');
-            $table->rememberToken();
+            $table->text('observation')->nullable()->comment('Observações.');
+            $table->bigInteger('user_id')->unsigned()->comment('Ligação com o user escolhido.');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('groupsfriends');
     }
 };

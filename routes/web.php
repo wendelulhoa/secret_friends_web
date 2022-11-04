@@ -16,13 +16,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [UserController::class, 'index'])->name('home');
-Route::get('/teste', [SecretFriendController::class, 'sortFriend']);
 
-Route::get('/register', [UserController::class, 'register']);
+Route::group(['middleware' => ['auth']], function () {
+
+    /* Rotas de empresas. */
+    Route::prefix('secretfriend')->group(function () {
+        Route::get('/', [SecretFriendController::class, 'index'])->name('secretfriend-index');
+        Route::get('/sortfriends', [SecretFriendController::class, 'viewSortFriends'])->name('secretfriend-viewsortfriends');
+        Route::get('/sortallfriends', [SecretFriendController::class, 'sortAllFriends'])->name('secretfriend-sortallFriends');
+        Route::get('/export/friend', [SecretFriendController::class, 'exportPdf'])->name('secretfriend-exportpdf');
+    });
+});
+
+/* Rotas de criação de participantes. */ 
+Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/register', [UserController::class, 'store']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/sendemail', [SecretFriendController::class, 'sendEmail'])->name('sendemail');
 
 require __DIR__.'/auth.php';

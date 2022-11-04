@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('suggestions', function (Blueprint $table) {
+        Schema::create('chosenfriends', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id_selected')->unsigned()->comment('Ligação com o user escolhido.');
+            $table->foreign('user_id_selected')->references('id')->on('users');
             $table->bigInteger('user_id')->unsigned()->comment('Ligação com o user.');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->json('categories')->comment('Categorias.');
-            $table->json('links')->nullable()->comment('links.');
-            $table->text('observation')->nullable()->comment('Observações.');
             $table->bigInteger('group_id')->unsigned()->comment('Ligação com o grupo de amigos.');
             $table->foreign('group_id')->references('id')->on('groupsfriends');
             $table->timestamps();
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('suggestions');
+        Schema::dropIfExists('chosenfriends');
     }
 };

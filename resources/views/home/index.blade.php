@@ -21,7 +21,11 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td class="align-center">{{$user['name']}}</td>
-                                    <td class="align-center"><i class="fa fa-check" style="color: green"></i></td>
+                                    <td class="align-center">
+                                        @if (isset($chosenFriends[$user['id']]))
+                                            <i class="fa fa-check" style="color: green"></i>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

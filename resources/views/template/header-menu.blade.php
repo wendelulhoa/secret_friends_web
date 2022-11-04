@@ -16,7 +16,7 @@
                     <div class="dropdown d-md-flex header-message">
                         <a class="nav-link icon" id="total-notifications" data-toggle="dropdown">
                             <i class="far fa-bell"></i>
-                            <span class="nav-unread badge badge-danger badge-pill">2</span>
+                            <span class="nav-unread badge badge-danger badge-pill">0</span>
                         </a>
                         <input type="text"  id="ids-notifications" value="" hidden>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
@@ -47,7 +47,10 @@
                             <div class="dropdown-divider m-0"></div>
                             <a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-user"></i>Perfil</a>
                             <a class="dropdown-item" href=""><i class="dropdown-icon fe fe-mail"></i> Notificações</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"><i class="dropdown-icon fe fe-power"></i> Sair</a>
+                            <form action="{{ route('logout') }}" method="post" class="form-not-global">
+                                @csrf
+                                <button class="dropdown-item" type="submit"><i class="dropdown-icon fe fe-power"></i> Sair</button>
+                            </form>
                         </div>
                     </div>
                 @endguest
