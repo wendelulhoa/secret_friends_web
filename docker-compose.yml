@@ -1,54 +1,73 @@
-version: '3'
+version: "3.7"
 
 services:
-  db-mysql:
-    image: mysql
-    container_name: mysql-wendelulhoa
-    environment:
-      MYSQL_DATABASE: "wendelulhoa"
-      MYSQL_ROOT_PASSWORD: "123456"
-    ports:
-      - 3387:3306
-    volumes:
-      - ./.docker/mysql/dbdata:/var/lib/mysql
-    networks:
-      - ulhoa
+    # image project
+    app:
+        container_name: wendelulhoa-laravel-9
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: wendelulhoa/laravel9-app
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        depends_on: 
+            - redis
+        networks: 
+            - laravel-9
+    
+    # nginx
+    nginx:
+        container_name: wendelulhoa-nginx
+        image: nginx:alpine
+        restart: unless-stopped
+        ports: 
+            - "8989:80"
+        volumes: 
+            - ./:/var/www
+            - ./docker/nginx/:/etc/nginx/conf.d/
+        networks: 
+            - laravel-9
 
-  phpmyadmin:
-    depends_on:
-      - db-mysql
-    image: phpmyadmin
-    container_name: phpmyadmin-wendelulhoa
-    restart: always
-    ports:
-      - 9027:80
-    environment:
-      - PMA_ARBITRARY=1
-      - PMA_HOST=db-mysql
-      - PMA_USER=root
-      - PMA_PASSWORD=123456
-    networks:
-      - ulhoa
-    links:
-      - db-mysql
+    # db mysql
+    mysql:
+        container_name: wendelulhoa-mysql
+        image: mysql:5.7.22
+        restart: unless-stopped
+        environment: 
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+        volumes: 
+            - ./.docker/mysql/dbdata:/var/lib/mysql
+        ports: 
+            - "3388:3306"
+        networks: 
+            - laravel-9
 
-  web:
-    depends_on:
-      - db-mysql
-    build: ./.docker
-    container_name: server-wendelulhoa
-    ports:
-      - 9007:80
-    volumes:
-      - .:/var/www/html/wendelulhoa
-    restart: always
-    networks:
-      - ulhoa
-    cap_add:
-      - NET_ADMIN
-    links:
-      - db-mysql
+    # queue
+    queue:
+        container_name: wendelulhoa-queue
+        image: wendelulhoa/laravel9-app
+        restart: unless-stopped
+        command: "php artisan queue:work"
+        volumes: 
+            - ./:/var/www
+        depends_on: 
+            - redis
+            - app
+        networks: 
+            - laravel-9
 
-networks:
-  ulhoa:
-    driver: bridge
+    # redis
+    redis:
+        container_name: wendelulhoa-redis
+        image: redis:latest
+        networks: 
+            - laravel-9
+
+networks: 
+    laravel-9:
+        driver: bridge
