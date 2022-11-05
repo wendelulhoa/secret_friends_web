@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         Artisan::call('migrate:rollback');
         Artisan::call('migrate');
         Artisan::call('db:seed --class=Categories');
-        Artisan::call('db:seed --class=SecretFriends');
+        // Artisan::call('db:seed --class=SecretFriends');
         Artisan::call('config:cache');
 
         // \App\Models\User::factory(10)->create();

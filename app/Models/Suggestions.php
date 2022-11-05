@@ -14,5 +14,6 @@ class Suggestions extends Model
         'categories',
         'links',
         'observation',
+        'group_id'
     ];
 }

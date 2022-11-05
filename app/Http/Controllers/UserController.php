@@ -46,7 +46,8 @@ class UserController extends Controller
                 'user_id'     => $userId,
                 'categories'  => json_encode($data['categories'] ?? []),
                 'links'       => json_encode($data['links'] ?? []),
-                'observation' => $data['observation'] ?? ''
+                'observation' => $data['observation'] ?? '',
+                'group_id'    => 1
             ]);
 
             DB::commit();
@@ -57,7 +58,7 @@ class UserController extends Controller
             return redirect(route('home'));
         } catch (Exception $e) {
             DB::rollBack();
-
+            dd($e);
             /* Mensagem de sucesso. */
             session()->flash('warningMsg', 'Ops! esse usuário já existe.');
             
