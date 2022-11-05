@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="dropdown-divider m-0"></div>
-                            <a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-user"></i>Perfil</a>
+                            <a class="dropdown-item" href="{{route('user-edit')}}"><i class="dropdown-icon fe fe-user"></i>Perfil</a>
                             <a class="dropdown-item" href=""><i class="dropdown-icon fe fe-mail"></i> Notificações</a>
                             <form action="{{ route('logout') }}" method="post" class="form-not-global">
                                 @csrf

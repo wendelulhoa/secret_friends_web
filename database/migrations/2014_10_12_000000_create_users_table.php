@@ -20,7 +20,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('active')->default(false)->comment('Ativo? TRUE=Sim; FALSE=Não;');
-            $table->boolean('admin')->default(false)->comment('Ativo? TRUE=Sim; FALSE=Não;');
+            $table->boolean('admin')->default(false)->comment('admin? TRUE=Sim; FALSE=Não;');
+            $table->boolean('sendemail')->default(false)->comment('Enviar e-mail? TRUE=Sim; FALSE=Não;');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -26,8 +26,9 @@ class Categories extends Seeder
         $data = [
             'name' => 'Wendel Ulhoa',
             'username' => "wendelulhoa@gmail.com",
-            'password'=> "12345678",
-            'categories' => [1, 2]
+            'password' => "12345678",
+            'categories' => [1, 2],
+            'observation' => 'Não quero o kit "Tabu"'
         ];
 
         /* Cria o novo user. */
@@ -35,6 +36,7 @@ class Categories extends Seeder
             'name' => $data['name'],
             'email' => $data['username'],
             'password' => Hash::make($data['password']),
+            'sendemail' => true
         ])->id;
 
         GroupsFriends::create([
@@ -50,7 +52,7 @@ class Categories extends Seeder
             'group_id'    => 1
         ]);
 
-        foreach($categories as $category) {
+        foreach ($categories as $category) {
             ModelsCategories::create([
                 'name' => $category
             ]);

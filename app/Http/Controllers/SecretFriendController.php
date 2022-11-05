@@ -90,12 +90,14 @@ class SecretFriendController extends Controller
             // Dorme por 10 segundos
             sleep(2);
 
-            /* Envia */ 
-            Mail::send('secret-friends.email', ['chosenFriend' => $chosenFriend, 'user' => $user], function($mail) use($user) {
-                $mail->subject('Sorteio amigo secreto');
-                $mail->from('sorteio@familiabuscape.ml', 'Amigo secreto');
-                $mail->to($user['email']);
-            });
+            if($user['sendemail']) {
+                /* Envia */ 
+                Mail::send('secret-friends.email', ['chosenFriend' => $chosenFriend, 'user' => $user], function($mail) use($user) {
+                    $mail->subject('Sorteio amigo secreto');
+                    $mail->from('sorteio@familiabuscape.ml', 'Amigo secreto');
+                    $mail->to($user['email']);
+                });
+            }
 
             // Dorme por 10 segundos
             sleep(2);

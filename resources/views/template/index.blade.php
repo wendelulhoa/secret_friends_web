@@ -62,10 +62,6 @@
 	</head>
 
 	<body class="app sidebar-mini rtl">
-		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBFQGJJ"
-			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-			<!-- End Google Tag Manager (noscript) -->
 		<div id="global-loader">
 			<img src="{{ mix('/images/loader.svg') }}" alt="loader">
 		</div>
@@ -128,7 +124,6 @@
 
 		<!-- Back to top -->
 		<a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 		<!-- Jquery js-->
 		<script src="{{ mix('/js/jquery-3.4.1.min.js') }}"></script>
 
