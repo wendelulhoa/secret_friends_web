@@ -8,7 +8,7 @@
 		<meta content="{{$description ?? ''}}" name="description">
 		<meta content="wendel ulhoa" name="author">
 		<meta name="keywords" content="{{isset($keywords) ? $keywords : $description ?? 'aas'}}"/>
-
+		@laravelPWA
 
 		<!-- Title -->
 		<link rel="sortcut icon" href="" type="image/x-icon" />
@@ -83,7 +83,6 @@
 						<div class="page-header">
 							<h1 class="page-title">{{ $type ?? 'Amigo oculto' }}</h1>
 						</div>
-
 						@yield('content')
 					</div>
 

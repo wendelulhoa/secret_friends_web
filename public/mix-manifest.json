@@ -97,5 +97,6 @@
     "/plugins/accordion/accordion.min.js": "/plugins/accordion/accordion.min.js",
     "/plugins/accordion/accordions.js": "/plugins/accordion/accordions.js",
     "/plugins/counters/counter.js": "/plugins/counters/counter.js",
-    "/plugins/input-mask/jquery.mask.min.js": "/plugins/input-mask/jquery.mask.min.js"
+    "/plugins/input-mask/jquery.mask.min.js": "/plugins/input-mask/jquery.mask.min.js",
+    "prefer_related_applications": false
 }
