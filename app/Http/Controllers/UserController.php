@@ -16,6 +16,7 @@ class UserController extends Controller
 {
     public function index()
     {
+        return view('home.index', ['users' => []]);
         $users         = User::all();
         $chosenFriends = ChosenFriends::getAllChosenFriends();
         $type = 'Participantes';
