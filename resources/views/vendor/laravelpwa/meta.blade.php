@@ -1,5 +1,6 @@
 <!-- Web Application Manifest -->
-<link rel="manifest" href="{{ route('laravelpwa.manifest') }}">
+{{-- <link rel="manifest" href="{{ route('laravelpwa.manifest') }}"> --}}
+<link rel="manifest" href="{{ route('manifest') }}">
 <!-- Chrome for Android theme color -->
 <meta name="theme-color" content="{{ $config['theme_color'] }}">
 

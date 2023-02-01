@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ManifestController;
 use App\Http\Controllers\SecretFriendController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/update', [UserController::class, 'update'])->name('user-update');
     });
 });
+
+Route::get('/manifestcustom.json', [ManifestController::class, 'index'])->name('manifest');
 
 /* Rotas de criação de participantes. */ 
 Route::get('/register', [UserController::class, 'register'])->name('register');
