@@ -10,6 +10,7 @@
 		<meta name="keywords" content="{{isset($keywords) ? $keywords : $description ?? 'aas'}}"/>
 		@laravelPWA
 
+		<script src="{{asset('OneSignalSDKWorker.js')}}"></script>
 		<!-- Title -->
 		<link rel="sortcut icon" href="" type="image/x-icon" />
 		<title>{{$title ?? 'Amigo oculto'}}</title>
@@ -158,5 +159,18 @@
 		<script src="{{ mix('/js/custom.js') }}"></script>
 		@stack('script-js')
 		@include('template.global-js', ['route'=> $route ?? '', 'type'=> $type ?? ''])
+		<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+		<script>
+			window.OneSignal = window.OneSignal || [];
+			OneSignal.push(function() {
+				OneSignal.init({
+				appId: "4753d5d4-6572-4116-af61-ff5b89c559cb",
+				safari_web_id: "web.onesignal.auto.44737891-769a-4856-a052-0f3c94719003",
+				notifyButton: {
+					enable: true,
+				},
+				});
+			});
+		</script>
 	</body>
 </html>
