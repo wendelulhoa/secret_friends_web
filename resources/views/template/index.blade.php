@@ -168,8 +168,8 @@
 				});
 				
 				OneSignal.init({
-					appId: "4753d5d4-6572-4116-af61-ff5b89c559cb",
-					safari_web_id: "web.onesignal.auto.44737891-769a-4856-a052-0f3c94719003",
+					appId: "d5246ff5-fe8b-4fa5-ab49-f7e3bb647a0f",
+					safari_web_id: "web.onesignal.auto.38b1a4de-a361-440e-ae28-b71c05790af2",
 					notifyButton: {
 						enable: true,
 					},
