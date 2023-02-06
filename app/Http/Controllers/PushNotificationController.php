@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class PushNotificationController extends Controller
 {   
-    private const APP_ID = '4753d5d4-6572-4116-af61-ff5b89c559cb';
-    private const TOKEN  = 'NzE1N2E1ODQtZmM3Yy00ZmY5LTkwMjMtZTM0NDBkZTYxNGIx';
+    private const APP_ID = 'd5246ff5-fe8b-4fa5-ab49-f7e3bb647a0f';
+    private const TOKEN  = 'NDYyMTJiMjktYTk5YS00YmNmLTlhZjAtYzJlN2NkZGYxNjEy';
 
     // Your code here!
     protected static function sendMessage()
