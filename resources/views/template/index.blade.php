@@ -163,12 +163,16 @@
 		<script>
 			window.OneSignal = window.OneSignal || [];
 			OneSignal.push(function() {
+				OneSignal.getUserId().then(function(userId) {
+					console.log("OneSignal User ID:", userId);
+				});
+				
 				OneSignal.init({
-				appId: "4753d5d4-6572-4116-af61-ff5b89c559cb",
-				safari_web_id: "web.onesignal.auto.44737891-769a-4856-a052-0f3c94719003",
-				notifyButton: {
-					enable: true,
-				},
+					appId: "4753d5d4-6572-4116-af61-ff5b89c559cb",
+					safari_web_id: "web.onesignal.auto.44737891-769a-4856-a052-0f3c94719003",
+					notifyButton: {
+						enable: true,
+					},
 				});
 			});
 		</script>
