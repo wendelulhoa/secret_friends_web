@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ManifestController;
+use App\Http\Controllers\PushNotificationController;
 use App\Http\Controllers\SecretFriendController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -42,5 +43,6 @@ Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/register', [UserController::class, 'store']);
 
 Route::get('/sendemail', [SecretFriendController::class, 'sendEmail'])->name('sendemail');
+Route::get('/createnotification', [PushNotificationController::class, 'createNotification'])->name('createnotification');
 
 require __DIR__.'/auth.php';
