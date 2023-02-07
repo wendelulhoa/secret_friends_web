@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UsersNotification;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PushNotificationController extends Controller
@@ -22,7 +25,7 @@ class PushNotificationController extends Controller
         
         $fields = array(
             'app_id' => self::APP_ID,
-            'include_player_ids' => array("2969d98b-1aee-477a-af8c-bd7e11bdc73a"),
+            'include_external_user_ids' => array("2969d98b-1aee-477a-af8c-bd7e11bdc73a"),
             'channel_for_external_user_ids' => 'push',
             'data' => array("foo" => "bar"),
             'contents' => $content,
@@ -43,5 +46,31 @@ class PushNotificationController extends Controller
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 
         curl_close($ch);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * 
+     * @return JsonResponse
+     */
+    public function createUser(Request $request): JsonResponse
+    {
+        try {
+            $data = $request->all();
+
+            if(!UsersNotification::where(['user_token' => $data['userToken']])->exists()) {
+                UsersNotification::create([
+                    'company_id'        => $data['companyId'],
+                    'user_token'        => $data['userToken'],
+                    'authorized_stores' => json_encode([])
+                ]);
+            }
+
+            return response()->json(['sucess' => true], 200);
+        } catch (Exception $e){
+            return response()->json(['error' => true], 500);
+        }
     }
 }

@@ -43,6 +43,15 @@ Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/register', [UserController::class, 'store']);
 
 Route::get('/sendemail', [SecretFriendController::class, 'sendEmail'])->name('sendemail');
-Route::get('/createnotification', [PushNotificationController::class, 'createNotification'])->name('createnotification');
+
+/* Rotas de amigo secreto. */
+Route::prefix('pushnotification')->group(function () {
+    /* Cria uma nova notificação. */ 
+    Route::get('/new/notification', [PushNotificationController::class, 'createNotification'])->name('pushnotification-new-notification');
+    
+    /* Cria um novo usuário que */ 
+    Route::post('/store/user', [PushNotificationController::class, 'createUser'])->name('pushnotification-store-user');
+});
+
 
 require __DIR__.'/auth.php';

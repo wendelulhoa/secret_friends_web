@@ -172,24 +172,21 @@
 					safari_web_id: "web.onesignal.auto.38b1a4de-a361-440e-ae28-b71c05790af2",
 					notifyButton: {
 						enable: true,
-					}
+					},
+					checkRestrictedOrigin: false
 				});
 
 				OneSignal.on('notificationPermissionChange', function(permissionChange) {
 					var currentPermission = permissionChange.to;
-					console.log(permissionChange)
-					// if(currentPermission == 'granted' || )
 
+					if(currentPermission == 'granted') {
+						const userToken = await OneSignal.getUserId();
+
+						/* Cria um usuário para receber notificações. */ 
+						createNewUserNotification(userToken);
+					}
 				});
 			});
-
-			setInterval(() => {
-				
-			}, 5);
-
-			// console.log("Site notification permission: ", await OneSignal.getNotificationPermission());
-			// console.log("Push enabled: ", await OneSignal.isPushNotificationsEnabled());
-			// console.log("Player id: ", );
 		</script>
 	</body>
 </html>

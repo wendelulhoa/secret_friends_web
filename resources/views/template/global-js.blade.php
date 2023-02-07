@@ -92,4 +92,18 @@
     @elseif (session('warningMsg'))
         toastr.warning("{{ session('warningMsg') }}");
     @endif
+
+    /* Cria um usuário que receberá notificações dessa loja ou empresa. */ 
+    function createNewUserNotification(userToken) {
+        return $.ajax({
+            url: `{{ Route('pushnotification-store-user') }}`,
+            method: "post",
+            data: {
+                "_token"  : "{{ csrf_token() }}",
+                userToken : userToken,
+                companyId : 1,
+                shopId    : 2
+            }
+        });
+    }
 </script>
