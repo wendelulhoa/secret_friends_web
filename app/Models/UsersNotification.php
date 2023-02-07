@@ -19,4 +19,7 @@ class UsersNotification extends Model
         'user_token',
         'authorized_stores'
     ];
+
+    /* Tabela. */ 
+    public $table = "usersnotification";
 }
