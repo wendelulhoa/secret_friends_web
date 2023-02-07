@@ -173,10 +173,16 @@
 					notifyButton: {
 						enable: true,
 					},
+					on
 				});
 
 				OneSignal.on('subscriptionChange', function (isSubscribed) {
 					console.log("The user's subscription state is now:", isSubscribed);
+				});
+
+				OneSignal.on('notificationPermissionChange', function(permissionChange) {
+					var currentPermission = permissionChange.to;
+					console.log('New permission state:', currentPermission);
 				});
 			});
 
