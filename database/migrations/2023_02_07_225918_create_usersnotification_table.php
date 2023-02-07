@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('company_id');
             $table->text('user_token')->comment('Guarda o token do usuário');
-            $table->json('shop')->comment('Lojas permitidas, por padrão só cadastra');
+            $table->json('authorized_stores')->comment('Lojas permitidas, por padrão só cadastra a atual de acesso.');
             $table->timestamps();
         });
     }
