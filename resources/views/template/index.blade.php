@@ -175,13 +175,11 @@
 					}
 				});
 
-				OneSignal.on('subscriptionChange', function (isSubscribed) {
-					console.log("The user's subscription state is now:", isSubscribed);
-				});
-
 				OneSignal.on('notificationPermissionChange', function(permissionChange) {
 					var currentPermission = permissionChange.to;
-					console.log('New permission state:', currentPermission);
+					console.log(permissionChange)
+					// if(currentPermission == 'granted' || )
+
 				});
 			});
 
@@ -191,7 +189,7 @@
 
 			// console.log("Site notification permission: ", await OneSignal.getNotificationPermission());
 			// console.log("Push enabled: ", await OneSignal.isPushNotificationsEnabled());
-			// console.log("Player id: ", await OneSignal.getUserId());
+			// console.log("Player id: ", );
 		</script>
 	</body>
 </html>
