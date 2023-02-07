@@ -17,19 +17,15 @@ class PushNotificationController extends Controller
      *
      * @return void
      */ 
-    public function createNotification($message, $title, $shopId = null) 
+    public static function createNotification($title, $message, $shopId = null) 
     {
-        $content = array(
-            "en" => 'Teste enviado',
-        );
-        
         $fields = array(
             'app_id' => self::APP_ID,
             'include_external_user_ids' => array("2969d98b-1aee-477a-af8c-bd7e11bdc73a"),
             'channel_for_external_user_ids' => 'push',
             'data' => array("foo" => "bar"),
-            'contents' => $content,
-            'headings' => ['en' => 'Wendel ulhoa']
+            'contents' => ["en" => $title ],
+            'headings' => ['en' => $message]
         );
         
         $fields = json_encode($fields);
@@ -67,6 +63,8 @@ class PushNotificationController extends Controller
                     'authorized_stores' => json_encode([])
                 ]);
             }
+
+            self::createNotification('Nova oferta', 'Oferta 10/02', $shopId = null);
 
             return response()->json(['sucess' => true], 200);
         } catch (Exception $e){

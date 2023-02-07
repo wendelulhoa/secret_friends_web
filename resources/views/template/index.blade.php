@@ -163,10 +163,6 @@
 		<script>
 			window.OneSignal = window.OneSignal || [];
 			OneSignal.push(function() {
-				OneSignal.getUserId().then(function(userId) {
-					console.log("OneSignal User ID:", userId);
-				});
-				
 				OneSignal.init({
 					appId: "d5246ff5-fe8b-4fa5-ab49-f7e3bb647a0f",
 					safari_web_id: "web.onesignal.auto.38b1a4de-a361-440e-ae28-b71c05790af2",
