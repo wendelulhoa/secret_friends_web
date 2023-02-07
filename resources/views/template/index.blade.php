@@ -174,9 +174,6 @@
 						enable: true,
 					},
 				});
-				window.plugins.OneSignal.getPermissionSubscriptionState(function(status) {
-					console.log(status)
-				});
 
 				OneSignal.on('subscriptionChange', function (isSubscribed) {
 					console.log("The user's subscription state is now:", isSubscribed);
