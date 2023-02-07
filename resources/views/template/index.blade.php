@@ -179,14 +179,21 @@
 				OneSignal.on('notificationPermissionChange', function(permissionChange) {
 					var currentPermission = permissionChange.to;
 
-					if(currentPermission == 'granted') {
+					/* Busca o token que foi gerado. */ 
+					const getUserToken = async () => {
 						const userToken = await OneSignal.getUserId();
+						return userToken;
+					}
+
+					if(currentPermission == 'granted') {
+						const userToken = getUserToken();
 
 						/* Cria um usuário para receber notificações. */ 
 						createNewUserNotification(userToken);
 					}
 				});
 			});
+
 		</script>
 	</body>
 </html>

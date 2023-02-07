@@ -70,7 +70,6 @@ class PushNotificationController extends Controller
 
             return response()->json(['sucess' => true], 200);
         } catch (Exception $e){
-            dd($e);
             return response()->json(['error' => true], 500);
         }
     }
