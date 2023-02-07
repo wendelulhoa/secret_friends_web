@@ -172,8 +172,7 @@
 					safari_web_id: "web.onesignal.auto.38b1a4de-a361-440e-ae28-b71c05790af2",
 					notifyButton: {
 						enable: true,
-					},
-					on
+					}
 				});
 
 				OneSignal.on('subscriptionChange', function (isSubscribed) {
