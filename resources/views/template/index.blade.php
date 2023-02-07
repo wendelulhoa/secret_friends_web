@@ -174,7 +174,22 @@
 						enable: true,
 					},
 				});
+				window.plugins.OneSignal.getPermissionSubscriptionState(function(status) {
+					console.log(status)
+				});
+
+				OneSignal.on('subscriptionChange', function (isSubscribed) {
+					console.log("The user's subscription state is now:", isSubscribed);
+				});
 			});
+
+			setInterval(() => {
+				
+			}, 5);
+
+			// console.log("Site notification permission: ", await OneSignal.getNotificationPermission());
+			// console.log("Push enabled: ", await OneSignal.isPushNotificationsEnabled());
+			// console.log("Player id: ", await OneSignal.getUserId());
 		</script>
 	</body>
 </html>
