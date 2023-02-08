@@ -114,4 +114,8 @@
 
         sweetAlertGlob(`Deseja ativar as notificações?`, action);
     }
+
+    setTimeout(function() {
+        teste();
+    }, 2000)
 </script>
