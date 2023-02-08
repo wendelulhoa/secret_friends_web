@@ -1,21 +1,22 @@
 <script>
-    @if (Auth::check())
-        /*coloca o select para poder pesquisar nele*/
-        $('.select2').select2();
+    /*coloca o select para poder pesquisar nele*/
+    $('.select2').select2();
 
-        function sweetAlert(title, action) {
-            Swal.fire({
-                title: title,
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'confirmar',
-                cancelButtonText: 'cancelar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    action();
-                }
-            });
-        }
+    function sweetAlert(title, action) {
+        Swal.fire({
+            title: title,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'confirmar',
+            cancelButtonText: 'cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                action();
+            }
+        });
+    }
+    
+    @if (Auth::check())
         $('.form-register').on('submit', function(e) {
             e.preventDefault();
 
