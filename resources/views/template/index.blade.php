@@ -167,7 +167,7 @@
 					appId: "d5246ff5-fe8b-4fa5-ab49-f7e3bb647a0f",
 					safari_web_id: "web.onesignal.auto.38b1a4de-a361-440e-ae28-b71c05790af2",
 					notifyButton: {
-						enable: false,
+						enable: Notification.permission != 'granted',
 					},
 					checkRestrictedOrigin: false
 				});
