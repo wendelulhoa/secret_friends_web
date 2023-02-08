@@ -106,16 +106,4 @@
             }
         });
     }
-
-    function teste() {
-        var action = () => {
-            OneSignal.showNativePrompt()
-        }
-
-        sweetAlertGlob(`Deseja ativar as notificações?`, action);
-    }
-
-    setTimeout(function() {
-        teste();
-    }, 2000)
 </script>
