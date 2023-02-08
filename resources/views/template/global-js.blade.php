@@ -2,7 +2,7 @@
     /*coloca o select para poder pesquisar nele*/
     $('.select2').select2();
 
-    function sweetAlert(title, action) {
+    function sweetAlertGlob(title, action) {
         Swal.fire({
             title: title,
             icon: 'question',
@@ -15,7 +15,7 @@
             }
         });
     }
-    
+
     @if (Auth::check())
         $('.form-register').on('submit', function(e) {
             e.preventDefault();
@@ -58,7 +58,7 @@
                 });
             };
 
-            sweetAlert(`Tem certeza que deseja cadastrar?`, action);
+            sweetAlertGlob(`Tem certeza que deseja cadastrar?`, action);
         });
 
         $('.delete-{{ $type }}').click(function(e) {
@@ -83,7 +83,7 @@
                 });
             }
 
-            sweetAlert(`Tem certeza que deseja excluir?`, action);
+            sweetAlertGlob(`Tem certeza que deseja excluir?`, action);
         });
     @endif
 
@@ -112,6 +112,6 @@
             OneSignal.showNativePrompt()
         }
 
-        sweetAlert(`Deseja ativar as notificações?`, action);
+        sweetAlertGlob(`Deseja ativar as notificações?`, action);
     }
 </script>
