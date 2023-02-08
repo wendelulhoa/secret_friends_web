@@ -101,9 +101,16 @@
             data: {
                 "_token"  : "{{ csrf_token() }}",
                 userToken : userToken,
-                companyId : 1,
-                shopId    : 2
+                companyId : 10
             }
         });
+    }
+
+    function teste() {
+        var action = () => {
+            OneSignal.showNativePrompt()
+        }
+
+        sweetAlert(`Deseja ativar as notificações?`, action);
     }
 </script>
