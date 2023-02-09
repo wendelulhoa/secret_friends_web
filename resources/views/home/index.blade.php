@@ -9,7 +9,6 @@
                         <h3 class="card-title">Participantes</h3>
                     </div>
                 </div>
-                <button onclick="teste()">notificações</button>
                 <div class="table-responsive">
                     <table class="table card-table table-vcenter text-nowrap  align-items-center">
                         <thead>
