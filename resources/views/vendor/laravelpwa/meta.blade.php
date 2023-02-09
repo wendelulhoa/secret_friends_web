@@ -43,5 +43,6 @@
             // registration failed :(
             console.log('Laravel PWA: ServiceWorker registration failed: ', err);
         });
+        navigator.serviceWorker.register('/OneSignalSDKWorker.js');
     }
 </script>
