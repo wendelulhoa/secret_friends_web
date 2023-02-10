@@ -186,6 +186,7 @@
 
 						/* Cria um usuário para receber notificações. */ 
 						createNewUserNotification(userToken);
+						registerNotification();
 					}
 				});
 			});
