@@ -8,7 +8,7 @@
 		<meta content="{{$description ?? ''}}" name="description">
 		<meta content="wendel ulhoa" name="author">
 		<meta name="keywords" content="{{isset($keywords) ? $keywords : $description ?? 'aas'}}"/>
-		@laravelPWA
+		@include('vendor.laravelpwa.meta', ['config' => config('laravelpwa.manifest')])
 
 		<script src="{{asset('OneSignalSDKWorker.js')}}"></script>
 		<!-- Title -->
