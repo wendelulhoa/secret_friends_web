@@ -208,7 +208,6 @@
 						cancelButtonText: "NO THANKS",
 						autoAcceptTitle: 'Click Allow'
 					}
-					checkRestrictedOrigin: false
 				});
 				OneSignal.showHttpPrompt();
 
