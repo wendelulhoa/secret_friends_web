@@ -9,7 +9,7 @@
                         <h3 class="card-title">Participantes</h3>
                     </div>
                 </div>
-                <a onclick="registerNotification()">Notify me when there are new attendees</a>
+                <button onclick="registerNotification()">Notify me when there are new attendees</button>
                 <div class="table-responsive">
                     <table class="table card-table table-vcenter text-nowrap  align-items-center">
                         <thead>
