@@ -47,3 +47,19 @@ self.addEventListener('sync', function(event) {
         event.waitUntil(syncAttendees()); // sending sync request
     }
 });
+
+self.addEventListener("push", e => {
+    
+    console.log(e, 'aqui');
+    alert('ssnn')
+    // const payload = JSON.parse(e.data.text());
+ 
+    // e.waitUntil(self.registration.showNotification(
+    //     payload.title,
+    //     {
+    //         body: payload.body,
+    //         icon: "/icon.png"
+    //     }
+    // ));
+ 
+});
