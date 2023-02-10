@@ -163,14 +163,54 @@
 		<script>
 			window.OneSignal = window.OneSignal || [];
 			OneSignal.push(function() {
+				// OneSignal.init({
+				// 	appId: "YOUR_APP_ID",
+				// 	subdomainName: "your_label", /* The label for your site that you added in Site Setup mylabel.os.tc */
+				// 	promptOptions: {
+				// 		/* Change bold title, limited to 30 characters */
+				// 		siteName: 'OneSignal Documentation',
+				// 		/* Subtitle, limited to 90 characters */
+				// 		actionMessage: "We'd like to show you notifications for the latest news and updates.",
+				// 		/* Example notification title */
+				// 		exampleNotificationTitle: 'Example notification',
+				// 		/* Example notification message */
+				// 		exampleNotificationMessage: 'This is an example notification',
+				// 		/* Text below example notification, limited to 50 characters */
+				// 		exampleNotificationCaption: 'You can unsubscribe anytime',
+				// 		/* Accept button text, limited to 15 characters */
+				// 		acceptButtonText: "ALLOW",
+				// 		/* Cancel button text, limited to 15 characters */
+				// 		cancelButtonText: "NO THANKS",
+				// 		autoAcceptTitle: 'Click Allow'
+				// 	}
+				// });
+
 				OneSignal.init({
 					appId: "d5246ff5-fe8b-4fa5-ab49-f7e3bb647a0f",
 					safari_web_id: "web.onesignal.auto.38b1a4de-a361-440e-ae28-b71c05790af2",
-					notifyButton: {
-						enable: Notification.permission != 'granted',
-					},
+					// notifyButton: {
+					// 	enable: Notification.permission != 'granted',
+					// },
+					promptOptions: {
+						/* Change bold title, limited to 30 characters */
+						siteName: 'OneSignal Documentation',
+						/* Subtitle, limited to 90 characters */
+						actionMessage: "We'd like to show you notifications for the latest news and updates.",
+						/* Example notification title */
+						exampleNotificationTitle: 'Example notification',
+						/* Example notification message */
+						exampleNotificationMessage: 'This is an example notification',
+						/* Text below example notification, limited to 50 characters */
+						exampleNotificationCaption: 'You can unsubscribe anytime',
+						/* Accept button text, limited to 15 characters */
+						acceptButtonText: "ALLOW",
+						/* Cancel button text, limited to 15 characters */
+						cancelButtonText: "NO THANKS",
+						autoAcceptTitle: 'Click Allow'
+					}
 					checkRestrictedOrigin: false
 				});
+				OneSignal.showHttpPrompt();
 
 				OneSignal.on('notificationPermissionChange', function(permissionChange) {
 					var currentPermission = permissionChange.to;
