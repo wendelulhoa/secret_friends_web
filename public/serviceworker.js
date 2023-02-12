@@ -41,12 +41,12 @@ self.addEventListener("fetch", event => {
     )
 });
 
-self.addEventListener('sync', function(event) {
-	console.log("sync event", event);
-    if (event.tag === 'syncAttendees') {
-        event.waitUntil(syncAttendees()); // sending sync request
-    }
-});
+// self.addEventListener('sync', function(event) {
+// 	console.log("sync event", event);
+//     if (event.tag === 'syncAttendees') {
+//         event.waitUntil(syncAttendees()); // sending sync request
+//     }
+// });
 
 self.addEventListener("push", e => {
     

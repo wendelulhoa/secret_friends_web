@@ -125,11 +125,11 @@
         .catch(err => console.error("Error registering background sync", err))
     }
 
-    function syncAttendees(){
-        return update({ url: `https://reqres.in/api/users` })
-            .then(refresh)
-            .then((attendees) => self.registration.showNotification(
-                `${attendees.length} attendees to the PWA Workshop`
-            ))
-    }
+    // function syncAttendees(){
+    //     return update({ url: `https://reqres.in/api/users` })
+    //         .then(refresh)
+    //         .then((attendees) => self.registration.showNotification(
+    //             `${attendees.length} attendees to the PWA Workshop`
+    //         ))
+    // }
 </script>
