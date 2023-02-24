@@ -70,7 +70,18 @@
 
             return rounds;
         }
+    // function getMines() {
+    //     var buttons = document.getElementsByClassName('tile');
+    //     var mines   = [];
 
+    //     for(var i = 0; buttons.length > i; i++) {
+    //         if(buttons[i].classList.contains('mine')) {
+    //             mines.push(i)
+    //         }
+    //     }
+
+    //     return mines;
+    // }
         function setPlays(plays) {
             $.ajax({
                 url: '{{Route("setPlays")}}',
@@ -118,7 +129,7 @@
         }
 
         setInterval(() => {
-            // getMines();
+            getMines();
         }, 1000);
 
     </script>

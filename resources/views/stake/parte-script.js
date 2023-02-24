@@ -1,6 +1,6 @@
-<script>
 
-    function init() {
+    async function init() {
+        await start();
         getPlays();
     }
 
@@ -15,8 +15,8 @@
         });
 
         var tes = await teste.json();
-        console.log(tes)
-        // generateNumbers(tes);
+
+        generateNumbers(tes);
     }
 
     async function setMines(mines) {
@@ -31,18 +31,42 @@
     }
 
     async function generateNumbers(numbers) {
-        for(var i = 0; numbers.length > i; i++) {
-            // document.getElementsByClassName('tile')[numbers[i]].click();
-            var playCurrent = await play(numbers[i]);
+        var win = true;
 
-            if(playCurrent.data.minesNext.state.mines != null) {
-                setMines(playCurrent.data.minesNext.state.mines)
-            }
+        // for(var i = 0; numbers.length > i; i++) {
+        //     // document.getElementsByClassName('tile')[numbers[i]].click();
+        //     var playCurrent = await play(numbers[i]);
+
+        //     if(playCurrent.data.minesNext.state.mines != null) {
+        //         setMines(playCurrent.data.minesNext.state.mines);
+        //         console.log('loss')
+        //         win = false;
+        //         break;
+        //     } else {
+        //         win = true;
+        //     }
+        // }
+        // document.getElementsByClassName('tile')[numbers[i]].click();
+        var playCurrent = await play(numbers);
+
+       try {
+        if(playCurrent.data.minesNext.state.mines != null) {
+            setMines(playCurrent.data.minesNext.state.mines);
+            console.log('loss')
+            win = false;
+            // break;
+        } else {
+            win = true;
         }
-
+        if(win)console.log('win')
         await stop();
+       } catch(c) {
 
-        init();
+       }
+
+        setTimeout(() => {
+            init(); 
+        }, 1500);
     }
 
     async function play(number) {
@@ -132,21 +156,13 @@
         }).then(function(response) {
             return response.json();
         }).then(function(e) {
-            // `data` is the parsed version of the JSON returned from the above endpoint.
-            setMines(e.data.minesNext.state.mines)
+            try {
+                // `data` is the parsed version of the JSON returned from the above endpoint.
+                setMines(e.data.minesNext.state.mines)
+            } catch (error) {
+                
+            }
         });
     }
 
-    // function getMines() {
-    //     var buttons = document.getElementsByClassName('tile');
-    //     var mines   = [];
 
-    //     for(var i = 0; buttons.length > i; i++) {
-    //         if(buttons[i].classList.contains('mine')) {
-    //             mines.push(i)
-    //         }
-    //     }
-
-    //     return mines;
-    // }
-</script>
