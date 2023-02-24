@@ -13,7 +13,7 @@ class StakeController extends Controller
     }
 
     public function getplays() {
-        return json_decode(configsstake::find(1)->plays);
+        return response()->json(json_decode(configsstake::find(1)->plays), 200);
     }
 
     public function setPlays(Request $request) {
@@ -31,7 +31,7 @@ class StakeController extends Controller
     }
 
     public function getMines() {
-        return json_decode(configsstake::find(1)->mines);
+        return response()->json(json_decode(configsstake::find(1)->mines), 200);
     }
 
     public function setMines(Request $request) {
