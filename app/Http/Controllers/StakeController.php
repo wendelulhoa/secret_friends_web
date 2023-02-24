@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\configsstake;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -12,19 +13,38 @@ class StakeController extends Controller
     }
 
     public function getplays() {
-        return Session::get('plays');
+        return json_decode(configsstake::find(1)->plays);
     }
 
     public function setPlays(Request $request) {
-        Session::put('plays', $request['plays']);
-        // Session::put('plays', [1,2,3]);
+        $configs = configsstake::find(1);
+
+        if(!is_null($configs)) {
+            $configs->update([
+                'plays' => json_encode($request['plays'])
+            ]);
+        } else {
+            configsstake::create([
+                'plays' => json_encode($request['plays'])
+            ]);
+        }
     }
 
     public function getMines() {
-        return Session::get('mines');
+        return json_decode(configsstake::find(1)->mines);
     }
 
     public function setMines(Request $request) {
-        Session::put('mines', explode(',', $request['mines']));
+        $configs = configsstake::find(1);
+
+        if(!is_null($configs)) {
+            $configs->update([
+                'mines' => json_encode(explode(',', $request['mines']))
+            ]);
+        } else {
+            configsstake::create([
+                'mines' => json_encode(explode(',', $request['mines']))
+            ]);
+        }
     }
 }

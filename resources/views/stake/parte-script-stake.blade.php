@@ -15,8 +15,8 @@
         });
 
         var tes = await teste.json();
-
-        generateNumbers(tes);
+        console.log(tes)
+        // generateNumbers(tes);
     }
 
     async function setMines(mines) {

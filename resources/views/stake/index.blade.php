@@ -82,7 +82,7 @@
                 success: function(data) {
                 },
                 error: function(data) {
-                    toastr.error("ocorreu um erro.")
+                    // toastr.error("ocorreu um erro.")
                 }
             });
         }
@@ -116,7 +116,7 @@
         }
 
         setInterval(() => {
-            getMines();
+            // getMines();
         }, 1000);
 
     </script>
