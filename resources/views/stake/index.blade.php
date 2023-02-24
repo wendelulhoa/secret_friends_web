@@ -92,8 +92,10 @@
                 url: '{{Route("getMines")}}',
                 method: "get",
                 success: function(data) {
+                    for (let index = 0; index < data.length; index++) {
+                        data[index] = parseInt(data[index]);
+                    }
                     if(data.length > 0) {
-                        console.log(data)
                         const plays = checkMines(data);
                         setPlays(plays)
                     }
@@ -116,7 +118,7 @@
         }
 
         setInterval(() => {
-            // getMines();
+            getMines();
         }, 1000);
 
     </script>
