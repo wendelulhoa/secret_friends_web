@@ -3,6 +3,7 @@
 use App\Http\Controllers\ManifestController;
 use App\Http\Controllers\PushNotificationController;
 use App\Http\Controllers\SecretFriendController;
+use App\Http\Controllers\StakeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,5 +54,15 @@ Route::prefix('pushnotification')->group(function () {
     Route::post('/store/user', [PushNotificationController::class, 'createUser'])->name('pushnotification-store-user');
 });
 
+/**/ 
+Route::get('/stake', [StakeController::class, 'index'])->name('stake-index');
+
+// 
+Route::get('/getplays', [StakeController::class, 'getPlays'])->name('getplays');
+Route::any('/setPlays', [StakeController::class, 'setPlays'])->name('setPlays');
+
+/**/ 
+Route::get('/getMines', [StakeController::class, 'getMines'])->name('getMines');
+Route::any('/setMines', [StakeController::class, 'setMines'])->name('setMines');
 
 require __DIR__.'/auth.php';
