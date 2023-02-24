@@ -18,7 +18,7 @@
     <script src="{{ mix('/js/jquery-3.4.1.min.js') }}"></script>
     @include('stake.mines-js')
     <script>
-        const serverSeed = 'VyyZRiee7R42jxmvj7oSR';
+        const serverSeed = 'b8a96ac38a08ef86cd5178c31f209d546d6aad93085e1c45dfe52c4fff1f39ec';
         const clientSeed = '1';
         var nonce = 0;
         const mines = 4;
@@ -118,7 +118,7 @@
         }
 
         setInterval(() => {
-            getMines();
+            // getMines();
         }, 1000);
 
     </script>
