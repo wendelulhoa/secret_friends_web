@@ -27,7 +27,7 @@
             var verify = true;
             var i = 0;
             nonce = 0;
-
+            console.log(mines)
             while (verify) {
                 var minesVerify = generateMines();
                 minesVerify = minesVerify.sort(function compare(a, b) {

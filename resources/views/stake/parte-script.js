@@ -62,7 +62,7 @@
         });
         // document.getElementsByClassName('tile')[numbers[i]].click();
         if(JSON.stringify(globLastMines) === JSON.stringify(numbers)) {
-            setMines(numbers)
+            await setMines(numbers)
             win2          = true;
             getPlays();
             return;
@@ -80,10 +80,9 @@
             // break;
         } else {
             win = true;
-        }
-        if(win && !win2){
             globCounts.win = globCounts.win + 1;
             console.log('win', playCurrent.data.minesNext.state.rounds)
+            setMines(playCurrent.data.minesNext.state.mines);
             await stop();
         }
        } catch(c) {
