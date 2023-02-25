@@ -27,7 +27,7 @@
             var verify = true;
             var i = 0;
             nonce = 0;
-            console.log(mines)
+
             while (verify) {
                 var minesVerify = generateMines();
                 minesVerify = minesVerify.sort(function compare(a, b) {
@@ -106,7 +106,8 @@
                     for (let index = 0; index < data.length; index++) {
                         data[index] = parseInt(data[index]);
                     }
-                    if(data.length > 0) {
+
+                    if(data.length == mines) {
                         const plays = checkMines(data);
                         setPlays(plays)
                     }
