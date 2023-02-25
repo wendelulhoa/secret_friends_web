@@ -18,10 +18,10 @@
     <script src="{{ mix('/js/jquery-3.4.1.min.js') }}"></script>
     @include('stake.mines-js')
     <script>
-        const serverSeed = 'b1ab31207774b59437d6c83d407bb2f92a058e33d092ca81f1219b77a2b203ce';
-        const clientSeed = '12';
+        const serverSeed = 'f86a4a416ca3625366cd549d034cd133b0a5b080d17986c438514f87949c183c';
+        const clientSeed = 'Bp3oQr_e3_';
         var nonce        = 0;
-        const mines      = 4;
+        var mines        = 3;
 
         function checkMines(mines) {
             var verify = true;
