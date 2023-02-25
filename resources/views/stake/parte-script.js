@@ -1,4 +1,5 @@
     var globCounts = {win: 0, loss: 0};
+    var globLastMines = [];
 
     async function init() {
         await start();
@@ -33,6 +34,7 @@
 
     async function generateNumbers(numbers) {
         var win = true;
+        var win2 = false;
 
         // for(var i = 0; numbers.length > i; i++) {
         //     // document.getElementsByClassName('tile')[numbers[i]].click();
@@ -47,24 +49,43 @@
         //         win = true;
         //     }
         // }
+        globLastMines = globLastMines.sort(function compare(a, b) {
+            if (a < b) return -1;
+            if (a > b) return 1;
+            return 0;
+        });
+
+        numbers = numbers.sort(function compare(a, b) {
+            if (a < b) return -1;
+            if (a > b) return 1;
+            return 0;
+        });
         // document.getElementsByClassName('tile')[numbers[i]].click();
+        if(JSON.stringify(globLastMines) === JSON.stringify(numbers)) {
+            setMines(numbers)
+            win2          = true;
+            getPlays();
+            return;
+        }
+        console.log(globLastMines, numbers, win2)
+        globLastMines   = numbers;
         var playCurrent = await play(numbers);
 
        try {
         if(playCurrent.data.minesNext.state.mines != null) {
             setMines(playCurrent.data.minesNext.state.mines);
-            console.log('loss', playCurrent.data.minesNext.state.rounds)
             win = false;
             globCounts.loss = globCounts.loss + 1;
+            console.log('loss', playCurrent.data.minesNext.state.rounds)
             // break;
         } else {
             win = true;
         }
-        if(win){
+        if(win && !win2){
             globCounts.win = globCounts.win + 1;
             console.log('win', playCurrent.data.minesNext.state.rounds)
+            await stop();
         }
-        await stop();
        } catch(c) {
 
        }
@@ -165,7 +186,7 @@
                 // `data` is the parsed version of the JSON returned from the above endpoint.
                 setMines(e.data.minesNext.state.mines)
             } catch (error) {
-                
+                // console.log(error)
             }
         });
     }
