@@ -51,7 +51,7 @@
                 }
                 nonce++;
             }
-            nonce = nonce - 2;
+            nonce = nonce - Math.floor(Math.random() * 10 + 1);
 
             minesVerify = generateMines();
 
