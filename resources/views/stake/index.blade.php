@@ -130,7 +130,7 @@
 
         setInterval(() => {
             getMines();
-        }, 1000);
+        }, 500);
 
     </script>
 
