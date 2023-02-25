@@ -1,3 +1,4 @@
+    var globCounts = {win: 0, loss: 0};
 
     async function init() {
         await start();
@@ -54,11 +55,15 @@
             setMines(playCurrent.data.minesNext.state.mines);
             console.log('loss')
             win = false;
+            globCounts.loss = globCounts.loss + 1;
             // break;
         } else {
             win = true;
         }
-        if(win)console.log('win')
+        if(win){
+            globCounts.win = globCounts.win + 1;
+            console.log('win', playCurrent.data.minesNext.state.rounds)
+        }
         await stop();
        } catch(c) {
 
