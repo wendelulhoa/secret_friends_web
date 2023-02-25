@@ -51,6 +51,7 @@
                 }
                 nonce++;
             }
+            nonce = nonce - 2;
 
             minesVerify = generateMines();
 

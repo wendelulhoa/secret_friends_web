@@ -67,7 +67,7 @@
             getPlays();
             return;
         }
-        console.log(globLastMines, numbers, win2)
+        console.log(numbers)
         globLastMines   = numbers;
         var playCurrent = await play(numbers);
 
