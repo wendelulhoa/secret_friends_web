@@ -8,7 +8,7 @@
     <meta name="viewport" id="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <!-- This site is optimized with the Yoast SEO plugin v15.8 - https://yoast.com/wordpress/plugins/seo/ -->
-    <title>Stake - Provably Fair Bet Verifier</title>
+    <title>asw</title>
 </head>
 
 <body>
@@ -20,8 +20,8 @@
     <script>
         const serverSeed = 'b1ab31207774b59437d6c83d407bb2f92a058e33d092ca81f1219b77a2b203ce';
         const clientSeed = '12';
-        var nonce = 0;
-        const mines = 4;
+        var nonce        = 0;
+        const mines      = 4;
 
         function checkMines(mines) {
             var verify = true;
@@ -51,7 +51,7 @@
                 }
                 nonce++;
             }
-
+            nonce++;
             minesVerify = generateMines();
 
             return minesVerify;
@@ -130,7 +130,7 @@
 
         setInterval(() => {
             getMines();
-        }, 500);
+        }, 250);
 
     </script>
 

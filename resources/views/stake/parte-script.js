@@ -53,7 +53,7 @@
        try {
         if(playCurrent.data.minesNext.state.mines != null) {
             setMines(playCurrent.data.minesNext.state.mines);
-            console.log('loss')
+            console.log('loss', playCurrent.data.minesNext.state.rounds)
             win = false;
             globCounts.loss = globCounts.loss + 1;
             // break;
@@ -71,7 +71,7 @@
 
         setTimeout(() => {
             init(); 
-        }, 1500);
+        }, 2500);
     }
 
     async function play(number) {
